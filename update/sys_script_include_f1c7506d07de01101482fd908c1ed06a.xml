@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_58872_needit.NameFromEmail</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>NameFromEmail</name>
+        <script><![CDATA[var NameFromEmail = Class.create();
+NameFromEmail.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+
+    getName: function() {
+        var userName = new GlideRecord('sys_user');
+        var userEmail = this.getParameter('sysparm_userID');
+		gs.addInfoMessage(userEmail);
+        userName.addQuery('email', userEmail);
+        userName.query();
+        if (userName.next()) {
+            var ghh = userName.first_name + '';
+			gs.addInfoMessage(ghh);
+			//return ghh;
+        }
+		gs.addInfoMessage("outside if -> " + ghh);
+		return ghh + '';
+    },
+
+
+    type: 'NameFromEmail'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-03-17 09:42:13</sys_created_on>
+        <sys_id>f1c7506d07de01101482fd908c1ed06a</sys_id>
+        <sys_mod_count>42</sys_mod_count>
+        <sys_name>NameFromEmail</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_script_include_f1c7506d07de01101482fd908c1ed06a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-03-30 18:02:48</sys_updated_on>
+    </sys_script_include>
+</record_update>

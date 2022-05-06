@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>false</active>
+        <api_name>x_58872_needit.testSII</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>testSII</name>
+        <script><![CDATA[var testSII = Class.create();
+testSII.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	
+	getName : function(){
+		gs.addInfoMessage("inside SI");
+		var obj;
+		var client = this.getParameter('sysparm_userEmailID');
+	gs.addInfoMessage(client);
+	//	gs.addInfoMessage("eamil "+ emaill);
+		var gr = new GlideRecord('sys_user');
+		gr.addQuery('email',client);
+		gr.query();
+		if(gr.next())
+			{
+				
+	//	if(gr.get(this.getParameter('sysparm_userEmailID'))){
+			gs.addInfoMessage("inside SI");
+			obj = gr.getValue('first_name');
+			gs.addInfoMessage("data unser obj" + obj);
+				//return obj;
+		}
+	return obj.toString;
+	},
+
+    type: 'testSII'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-03-17 12:13:12</sys_created_on>
+        <sys_id>f6fa342d075241101482fd908c1ed004</sys_id>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name>testSII</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_script_include_f6fa342d075241101482fd908c1ed004</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-03-17 12:45:53</sys_updated_on>
+    </sys_script_include>
+</record_update>
